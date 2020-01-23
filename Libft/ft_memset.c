@@ -29,13 +29,3 @@ void    ft_memset(void *ptr, int x, size_t n)
     }
 
 }
-
-int  main(void)
-{
-    char str1[50] = "banana";
-    printf("Before: %s\n", str1);
-
-    ft_memset(str1, '.', 3*sizeof(char));
-
-    printf("After: %s\n", str1);
-}
