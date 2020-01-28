@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   main_strncmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:16:15 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/24 11:56:56 by lmartins         ###   ########.fr       */
+/*   Created: 2020/01/28 12:21:55 by lmartins          #+#    #+#             */
+/*   Updated: 2020/01/28 12:21:56 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <string.h>
+#include <stdio.h>
 
-void    ft_memset(void *ptr, int x, size_t n)
+int main()
 {
-    unsigned int i;
-    char *array;
-    char l;
+	char dest1[] = "baana";
+	char dest2[] = "baana";
+	char src1[] = "banana";
+	char src2[] = "banana";
+	
+	printf("Ft: %d\n", ft_strncmp(dest1, src1, 3));
+	printf("Função: %d\n", strncmp(dest2, src2, 3));
 
-    i = 0;
-    array = (char *)ptr;
-    l = x;
-    while (i < n)
-    {
-        array[i] = l;
-        i++;
-    }
-
+	return (0);
 }

@@ -3,37 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 12:14:47 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/23 12:14:47 by lmartins         ###   ########.fr       */
+/*   Created: 2020/01/24 11:59:18 by lmartins          #+#    #+#             */
+/*   Updated: 2020/01/28 11:02:41 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
-#include <strings.h>
+#include "libft.h"
 
-// void    ft_bzero(void *ptr, size_t n)
-// {
-//     unsigned int i;
-//     char *array;
-
-//     i = 0;
-//     array = (char *)ptr;
-//     while (i < n)
-//     {
-//         array[i] = '\0';
-//         i++;
-//     }
-// }
-
-int main()
+void    ft_bzero(void *ptr, size_t n)
 {
-    char str[50] = "banana";
+    unsigned int i;
+    char *array;
 
-    // ft_bzero(str, 2);
-    bzero(str, 2);
-    printf("str: %s\n", str);
+    i = 0;
+    array = (char *)ptr;
+    while (i < n)
+    {
+        array[i] = '\0';
+        i++;
+    }
 }
