@@ -6,11 +6,11 @@
 #    By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/24 10:59:55 by lmartins          #+#    #+#              #
-#    Updated: 2020/01/24 10:59:56 by lmartins         ###   ########.fr        #
+#    Updated: 2020/01/30 10:59:40 by lmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NOME = rush-02
+NOME = libft.a
 
 all: $(NOME)
 

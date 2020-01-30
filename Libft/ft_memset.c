@@ -6,25 +6,25 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:16:15 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/28 11:01:19 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:50:11 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_memset(void *ptr, int x, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-    unsigned int i;
-    char *array;
-    char l;
+	unsigned int	i;
+	char			*array;
+	char			l;
 
-    i = 0;
-    array = (char *)ptr;
-    l = x;
-    while (i < n)
-    {
-        array[i] = l;
-        i++;
-    }
-
+	i = 0;
+	array = (char *)b;
+	l = c;
+	while (i < len)
+	{
+		array[i] = l;
+		i++;
+	}
+	return (b);
 }

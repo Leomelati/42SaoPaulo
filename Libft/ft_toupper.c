@@ -6,13 +6,13 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:54:12 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/28 10:51:48 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:08:13 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_toupper(int arg)
+int		ft_toupper(int c)
 {
-	if (arg >= 'a' && arg <= 'z')
-		arg -= ' ';
-	return (arg);
+	if (c >= 'a' && c <= 'z')
+		c -= ' ';
+	return (c);
 }

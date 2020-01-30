@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   main_memcpy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:57:23 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/30 12:07:17 by lmartins         ###   ########.fr       */
+/*   Created: 2020/01/30 11:42:53 by lmartins          #+#    #+#             */
+/*   Updated: 2020/01/30 11:42:54 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		main(void)
 {
-	int ret;
+	char str1[100] = "test string"; 
+	char str2[100] = "test string";
+	char dest1[100] = "temp";
+	char dest2[100] = "temp";
+	
+	printf("Antes da Ft: %s\n", dest1);
+	ft_memcpy(dest1, str1, 100);
+	printf("Depois da Ft: %s\n", dest1);
+	printf("Antes da Função: %s\n", dest2);
+	memcpy(dest2, str2, 100);
+	printf("Depois da Função: %s\n", dest2);	
 
-	ret = 0;
-	while ((n != '\0') && (*s1 != '\0') && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-		n--;
-	}
-	if (n != 0)
-	{
-		ret = (*s1 - *s2);
-	}
-	return (ret);
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:54:54 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/28 10:46:02 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:07:54 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int argument)
+int	ft_tolower(int c)
 {
-	if (argument >= 'A' && argument <= 'Z')
-		argument += ' ';
-	return (argument);
+	if (c >= 'A' && c <= 'Z')
+		c += ' ';
+	return (c);
 }
