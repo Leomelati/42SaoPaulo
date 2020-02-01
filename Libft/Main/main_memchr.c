@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bzero.c                                       :+:      :+:    :+:   */
+/*   main_memchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 20:33:32 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/01 20:33:32 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/01 20:32:49 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/01 20:32:49 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,23 @@
 
 int		main(void)
 {
-	char str1[] = "banana";
-    char str2[] = "banana";
+	char string1[10] = "Taj Mahal";
+	char string2[10] = "Taj Mahal";
+	char string3[10] = "Taj Mahal";
+	char string4[10] = "Taj Mahal";
+    char *resp1;
+    char *resp2;
+    char *resp3;
+    char *resp4;
 
-    bzero(str1, 4);
-    ft_bzero(str2, 4);
-
-    printf("Bzero: %s\n", str1);
-    printf("ft_bzero: %s\n", str2);
+	resp1 = ft_memchr(string1, 'j', 5);
+	resp2 = memchr(string2, 'j', 5);
+	resp3 = ft_memchr(string3, 'z', 5);
+	resp4 = memchr(string4, 'z', 5);
+	
+	printf("Ft: %s\n", resp1);
+	printf("Original: %s\n", resp2);
+	printf("Ft: %s\n", resp3);
+	printf("Original: %s\n", resp4);
+	return (0);
 }

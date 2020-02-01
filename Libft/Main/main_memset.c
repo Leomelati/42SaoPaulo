@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_memset.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/01 20:34:12 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/01 20:34:12 by lmartins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 #include <stdio.h>
-
-void    ft_memset(void *ptr, int x, size_t n);
+#include "libft.h"
 
 int main(void)
 {

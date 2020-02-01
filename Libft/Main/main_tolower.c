@@ -12,8 +12,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
-
-int	ft_tolower(int argument);
+#include "libft.h"
 
 int main()
 {

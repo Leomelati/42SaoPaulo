@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_strlen.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/01 20:35:01 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/01 20:35:01 by lmartins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
-
-size_t		ft_strlen(const char *str);
+#include "libft.h"
 
 int main(void)
 {

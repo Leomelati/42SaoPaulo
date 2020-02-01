@@ -12,8 +12,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
-
-int		ft_toupper(int arg);
+#include "libft.h"
 
 int main()
 {
