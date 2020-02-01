@@ -1,5 +1,7 @@
-.swo
-.swp
-.exe
+*.swo
+*.swp
+*.exe
 main.c
 .DS_Store
+.vscode
+.gitignore
