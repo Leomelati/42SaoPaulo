@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 10:54:54 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/05 11:54:12 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/01 21:27:56 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/05 12:36:25 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += ' ';
-	return (c);
+	unsigned int	i;
+	char			*cs;
+	char			*result;
+
+	i = 0;
+	cs = (char *)s;
+	result = NULL;
+	while (cs[i] != '\0')
+	{
+		if (cs[i] == c)
+		{
+			result = &cs[i];
+			return (result);
+		}
+		i++;
+	}
+	return (result);
 }

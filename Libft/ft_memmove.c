@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memmove.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:26:53 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/01 19:26:53 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/05 12:35:49 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *srd, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-    char *cdest;
-    char *csrd;
-    size_t i;
+	char	*cdst;
+	char	*csrc;
+	size_t	i;
 
-    cdest = (char *)dest;
-    csrd = (char *)srd;
-    if (csrd > cdest)
-    {
-        i = 0;
-        while (i < n)
-        {
-            cdest[i] = csrd[i];
-            i++;
-        }
-    } else 
-    {
-        while (n--)
-        {
-            cdest[n] = csrd[n];
-        }
-    }
-    return (dest);
+	cdst = (char *)dst;
+	csrc = (char *)src;
+	if (csrc > cdst)
+	{
+		i = 0;
+		while (i < len)
+		{
+			cdst[i] = csrc[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (len--)
+		{
+			cdst[len] = csrc[len];
+		}
+	}
+	return (dst);
 }
