@@ -10,17 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
-NOME = libft.a
+NOME = executavel
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NOME)
 
 $(NOME):
-	@gcc -Wall -Wextra -Werror -o $(NOME) *.c
+	gcc $(FLAGS) -c -o $(NOME) *.c
 
 clean:
-	@/bin/rm -f *.o
+	/bin/rm -f *.o
 
 fclean: clean
-	@/bin/rm -f $(NOME)
+	/bin/rm -f $(NOME)
 
 re: fclean all
