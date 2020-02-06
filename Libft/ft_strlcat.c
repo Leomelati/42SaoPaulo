@@ -6,13 +6,14 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:58:52 by lmartins          #+#    #+#             */
-/*   Updated: 2020/01/30 12:04:58 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/05 12:37:03 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+size_t	ft_strlcat(char *restrict dst, const char *restrict src,
+			size_t dstsize)
 {
 	unsigned int	dest_count;
 	unsigned int	src_count;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 20:37:15 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/01 20:37:15 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/05 12:34:47 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char *cs1;
-	char *cs2;
-	size_t i;
+	char	*cs1;
+	char	*cs2;
+	size_t	i;
 
 	cs1 = (char *)s1;
 	cs2 = (char *)s2;

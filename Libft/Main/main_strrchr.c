@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   main_strrchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 21:49:42 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/01 21:49:42 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/05 10:56:10 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/05 10:56:26 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 #include "libft.h"
-
-char	*ft_strrchr(const char *str, int c)
-{
-	unsigned int    i;
-	char            *cstr;
-	char            *result;
-
-	i = 0;
-	cstr = (char *)str;
-	result = NULL;
-	while (cstr[i] != '\0')
-	{
-		if (cstr[i] == c)
-		{
-			result = &cstr[i];
-		}
-		i++;
-	}
-	return (result);
-}
 
 int		main(void)
 {
