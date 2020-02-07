@@ -29,10 +29,13 @@ RM = rm -f
 $(NAME):	ranlib
 	@$(CC) $(CFLAGS) -o $(NAME) main*.c $(LIB_FLAGS)
 
+.c.o:
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
 ranlib: $(LIB_NAME)
 	@ranlib $(LIB_NAME)
 
-lib:	$(OBJS)
+$(LIB_NAME):	$(OBJS)
 	@ar rc $(LIB_NAME) $(OBJS)
 
 all:	$(NAME)
