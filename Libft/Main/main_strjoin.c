@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   main_strjoin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 11:18:44 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/07 11:50:43 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/09 17:59:35 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/09 17:59:35 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int		main(void)
 {
-	size_t	size;
-	char	*cs1;
-	char	*p;
-
-	size = ft_strlen(s1) + 1;
-	cs1 = (char *)s1;
-	p = malloc(size);
-	if (p == NULL)
-		return (NULL);
-	ft_strlcpy(p, cs1, size);
-	return (p);
+	char s1[] = "string1";
+	char s2[] = "string2";
+	char *resp;
+	
+	resp = ft_strjoin(s1, s2);
+	printf("Ft: %s\n", resp);
+	return (0);
 }

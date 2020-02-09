@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   main_substr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 11:18:44 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/07 11:50:43 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/09 17:11:09 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/09 17:11:09 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int		main(void)
 {
-	size_t	size;
-	char	*cs1;
-	char	*p;
+	char *dest1;
+	char string1[60] = "Taj Mahal is a historic monument in India.";
+    int inicio = 1;
+    int tamanho = 4;
 
-	size = ft_strlen(s1) + 1;
-	cs1 = (char *)s1;
-	p = malloc(size);
-	if (p == NULL)
-		return (NULL);
-	ft_strlcpy(p, cs1, size);
-	return (p);
+	dest1 = ft_substr(string1, inicio, tamanho);
+	printf("Ft: %s\n", dest1);
+	return (0);
 }
