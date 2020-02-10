@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:57:22 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/05 12:39:12 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/10 12:40:31 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	char	*resp;
 	char	*chaystack;
 	char	*cneedle;
 
@@ -24,19 +23,15 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	cneedle = (char *)needle;
 	if (cneedle[i] == '\0')
 		return (chaystack);
-	while (chaystack[i] != '\0' && i <= len)
+	else if (len <= 0)
+		return (0);
+	while (i <= len - ft_strlen(cneedle))
 	{
-		resp = chaystack;
-		if (chaystack[i] == cneedle[i] && i <= len)
-		{
-			resp = NULL;
-			while (cneedle[i] == chaystack[i])
-			{
-				i++;
-				if (cneedle[i] == '\0')
-					return (resp);
-			}
-		}
+		if (chaystack[0] == cneedle[0] &&
+			ft_strncmp(chaystack, cneedle, ft_strlen(cneedle)) == 0)
+			return ((char *)chaystack);
+		chaystack++;
+		i++;
 	}
-	return (resp);
+	return (0);
 }

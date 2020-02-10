@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   main_strtrim.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/09 18:30:35 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/09 18:30:35 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/10 13:26:44 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/10 13:26:45 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
-{
-
-
-
-}
-
 int		main(void)
 {
+	char	*string = "xxzxzTaj Mahalxzzzx";
+	char	*set = "zx";
 	char	*resp;
-	char	*string1 = "Taj Mahal is a historic monument in India.";
 
-	resp = ft_split(string1, ' ');
-	printf("Ft: %s\n", resp);
+	resp = ft_strtrim(string, set);
+	printf("%s\n", resp);
 	return (0);
 }

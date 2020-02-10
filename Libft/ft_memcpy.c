@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:01:43 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/05 11:51:19 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:02:46 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 		cdest[i] = csrc[i];
 		i++;
 	}
-	cdest[i + 1] = '\0';
 	return (cdest);
 }

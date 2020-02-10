@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 12:13:43 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/07 12:57:36 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:02:59 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	*ft_memccpy(void *restrict dst, const void *restrict src,
 			int c, size_t n)
 {
-	size_t	i;
-	char	*cdst;
-	char	*csrc;
+	size_t			i;
+	unsigned char	*cdst;
+	unsigned char	*csrc;
 
 	i = 0;
-	cdst = (char *)dst;
-	csrc = (char *)src;
+	cdst = (unsigned char *)dst;
+	csrc = (unsigned char *)src;
 	while (i < n)
 	{
 		cdst[i] = csrc[i];
-		if (csrc[i] == (unsigned char)c)
+		if (csrc[i] == c)
 			return (&cdst[i + 1]);
 		i++;
 	}
