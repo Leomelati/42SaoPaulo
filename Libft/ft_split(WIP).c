@@ -10,22 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include "libft.h"
+#include <stdio.h>
+#include "libft.h"
 
-// char	**ft_split(char const *s, char c)
-// {
+int     ft_count_words(char *s)
+{
+    size_t  qnt;
+    size_t  i;
+
+    qnt = 0;
+    i = 0;
+    while (i <= ft_strlen(s))
+    {
+        if (s[i] == ' ' && )
+        i++;
+    }
+    return (qnt);
+}
+
+char	**ft_split(char const *s, char c)
+{
 
 
 
-// }
+}
 
-// int		main(void)
-// {
-// 	char	*resp;
-// 	char	*string1 = "Taj Mahal is a historic monument in India.";
+int		main(void)
+{
+	char	*resp;
+	char	*string1 = "Taj Mahal is a historic monument in India.";
 
-// 	resp = ft_split(string1, ' ');
-// 	printf("Ft: %s\n", resp);
-// 	return (0);
-// }
+	resp = ft_split(string1, ' ');
+	printf("Ft: %s\n", resp);
+	return (0);
+}
