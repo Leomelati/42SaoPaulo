@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_strtrim.c                                     :+:      :+:    :+:   */
+/*   ft_putchar_ft.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/10 13:26:44 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/17 12:24:38 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/14 01:53:27 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/14 01:53:27 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 #include "libft.h"
 
-int		main(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*string = "          ";
-	char	*set = "\t \n";
-	char	*resp;
-
-	resp = ft_strtrim(string, set);
-	printf("%s\n", resp);
-	return (0);
+	write(fd, &c, 1);
 }

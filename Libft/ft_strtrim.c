@@ -6,11 +6,12 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 18:01:06 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/10 13:26:40 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:25:22 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	*ft_copy_part(char *dest, char *src, size_t end)
 {
@@ -53,14 +54,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	cset = (char *)set;
 	end = ft_strlen(cs1);
 	while (ft_in(cs1[start], cset) == 0)
-	{
 		start++;
-	}
 	while (ft_in(cs1[end], cset) == 0)
-	{
 		end--;
-	}
 	string = malloc((end - start + 1) * sizeof(char));
+	if (!string)
+		return (0);
 	string = ft_copy_part(string, &cs1[start], end - start);
 	return (string);
 }

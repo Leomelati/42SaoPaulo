@@ -6,60 +6,44 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 18:30:35 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/12 12:22:07 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:09:54 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void	ft_fill(char **array, size_t words, char *s, char c)
+size_t	ft_word_count(char const *s, char c)
 {
 	size_t	i;
-	size_t	j;
-	size_t	temp;
+	size_t	count;
 
 	i = 0;
-	j = 0;
-	while (i <= words)
+	count = 0;
+	while (s[i])
 	{
-		temp = 0;
-		while ((char)s[j] != c && j <= ft_strlen(s))
-		{
-			array[i][temp] = s[j];
-			j++;
-			temp++;
-		}
-		j++;
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+			count++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
+	return (count);
 }
 
-size_t	ft_word_len(char *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != c && i <= ft_strlen(s))
-	{
-		i++;
-	}
-	i++;
-	return (i);
-}
-
-size_t	ft_count_words(char *s, char c)
+size_t	ft_word_len(char const *s, char c)
 {
 	size_t	qnt;
 	size_t	i;
 
-	qnt = 1;
+	qnt = 0;
 	i = 0;
-	while (i <= ft_strlen(s))
+	while (s[i] && s[i] == c)
+		i++;
+	while (s[i] && s[i] != '\0')
 	{
-		if (s[i] == c && s[i - 1] != c)
-			qnt++;
-		// printf("testei %c e meu qnt é: %zu\n", s[i], qnt);
+		qnt++;
 		i++;
 	}
 	return (qnt);
@@ -68,18 +52,28 @@ size_t	ft_count_words(char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	size_t	words;
 	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	words = ft_count_words((char *)s, c);
-	printf("words: %zu\n", words);
-	array = malloc(words * sizeof(char *));
+	array = (char **)malloc((ft_word_count(s, c) + 1) * sizeof(char *));
+	if (!array || !s)
+		return (NULL);
 	i = 0;
-	while (i <= words)
+	j = 0;
+	while (i < ft_word_count(s, c))
 	{
-		array[i] = malloc((ft_word_len((char *)s, c) + 1) * sizeof(char));
+		k = 0;
+		array[i] = (char *)malloc((ft_word_len(&s[j], c) + 1) * sizeof(char));
+		if (!array[i])
+			return (NULL);
+		while (s[j] == c)
+			j++;
+		while (s[j] && s[j] != c)
+			array[i][k++] = s[j++];
+		array[i][k] = '\0';
 		i++;
 	}
-	ft_fill(array, words, (char *)s, c);
+	array[i] = 0;
 	return (array);
 }

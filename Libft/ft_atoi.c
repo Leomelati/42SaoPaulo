@@ -6,11 +6,11 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 00:03:28 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/12 13:23:35 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:28:43 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h> 
+#include <limits.h>
 #include "libft.h"
 
 int		ft_space(char letter)

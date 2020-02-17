@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 00:24:45 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/14 00:24:45 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:53:56 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	ft_reverse(char *array, int len)
 {
@@ -31,6 +32,21 @@ void	ft_reverse(char *array, int len)
 	}
 }
 
+void	ft_loop(unsigned int num, int i, int len, char *array)
+{
+	while (i < len)
+	{
+		if (num > 9)
+			array[i] = (num % 10) + '0';
+		else
+			array[i] = num + '0';
+		num /= 10;
+		i++;
+	}
+	ft_reverse(array, len);
+	array[i] = '\0';
+}
+
 int		ft_numlen(int n, int *len, int *signal)
 {
 	unsigned int num;
@@ -49,7 +65,7 @@ int		ft_numlen(int n, int *len, int *signal)
 		signal[0] = 1;
 	}
 	temp = num;
-	while (temp >= 9)
+	while (temp > 9)
 	{
 		temp /= 10;
 		len[0]++;
@@ -60,10 +76,10 @@ int		ft_numlen(int n, int *len, int *signal)
 char	*ft_itoa(int n)
 {
 	unsigned int	num;
-	int		len;
-	int		signal;
-	int		i;
-	char	*array;
+	int				len;
+	int				signal;
+	int				i;
+	char			*array;
 
 	num = ft_numlen(n, &len, &signal);
 	array = malloc((len + 1) * sizeof(char));
@@ -75,16 +91,6 @@ char	*ft_itoa(int n)
 		array[i] = '-';
 		i++;
 	}
-	while (i < len)
-	{
-		if (num > 9)
-			array[i] = (num % 10) + '0';
-		else
-			array[i] = num + '0';
-		num /= 10;
-		i++;
-	}
-	ft_reverse(array, len);
-	array[i] = '\0';
+	ft_loop(num, i, len, array);
 	return (array);
 }
