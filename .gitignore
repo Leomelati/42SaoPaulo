@@ -1,6 +1,7 @@
 *.swo
 *.swp
 *.exe
+a.out
 main.c
 .DS_Store
 .vscode
