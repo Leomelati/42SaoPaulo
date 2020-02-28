@@ -20,21 +20,14 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	cdst = (char *)dst;
 	csrc = (char *)src;
+	if (cdst == csrc)
+		return (cdst);
 	if (csrc > cdst)
 	{
-		i = 0;
-		while (i < len)
-		{
-			cdst[i] = csrc[i];
-			i++;
-		}
+		cdst = ft_memcpy(cdst, csrc, len);
+		return (cdst);
 	}
-	else
-	{
-		while (len--)
-		{
-			cdst[len] = csrc[len];
-		}
-	}
+	while (len-- > 0)
+		cdst[len] = csrc[len];
 	return (dst);
 }

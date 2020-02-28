@@ -23,7 +23,7 @@ int		ft_space(char letter)
 
 int		ft_atoi(const char *str)
 {
-	int		num;
+	unsigned long long int		num;
 	int		count;
 	int		sinal;
 
@@ -31,19 +31,21 @@ int		ft_atoi(const char *str)
 	count = 0;
 	sinal = 1;
 	while (ft_space(str[count]) != 0 && str[count] != '\0')
-	{
 		count++;
-	}
 	if (str[count] == '+' || str[count] == '-')
 	{
 		if (str[count] == '-')
 			sinal = -1;
 		count++;
 	}
-	while (ft_isdigit(str[count]) == 1)
+	while (ft_isdigit(str[count]) == 1 && num <= LONG_MAX)
 	{
 		num = num * 10 + str[count] - '0';
 		count++;
 	}
-	return (num * sinal);
+	if (num > LONG_MAX && sinal == 1)
+		return (-1);
+	else if (num > LONG_MAX && sinal == -1)
+		return (0);
+	return ((int)num * sinal);
 }

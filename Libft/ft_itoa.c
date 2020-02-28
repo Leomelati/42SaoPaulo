@@ -13,84 +13,42 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	ft_reverse(char *array, int len)
+int		ft_numlen(unsigned int n)
 {
-	int		i;
-	char	temp;
+	int len;
 
-	i = 0;
-	if (array[0] == '-')
-		i++;
-	len--;
-	while (i < len)
+	len = 1;
+	while (n >= 10)
 	{
-		temp = array[i];
-		array[i] = array[len];
-		array[len] = temp;
-		i++;
-		len--;
+		len++;
+		n = n / 10;
 	}
-}
-
-void	ft_loop(unsigned int num, int i, int len, char *array)
-{
-	while (i < len)
-	{
-		if (num > 9)
-			array[i] = (num % 10) + '0';
-		else
-			array[i] = num + '0';
-		num /= 10;
-		i++;
-	}
-	ft_reverse(array, len);
-	array[i] = '\0';
-}
-
-int		ft_numlen(int n, int *len, int *signal)
-{
-	unsigned int num;
-	unsigned int temp;
-
-	len[0] = 1;
-	if (n < 0)
-	{
-		num = -n;
-		len[0]++;
-		signal[0] = -1;
-	}
-	else
-	{
-		num = n;
-		signal[0] = 1;
-	}
-	temp = num;
-	while (temp > 9)
-	{
-		temp /= 10;
-		len[0]++;
-	}
-	return (num);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
 	unsigned int	num;
 	int				len;
-	int				signal;
-	int				i;
 	char			*array;
 
-	num = ft_numlen(n, &len, &signal);
-	array = malloc((len + 1) * sizeof(char));
-	if (array == NULL)
-		return (NULL);
-	i = 0;
-	if (signal == -1)
+	if (n < 0)
+		num = (unsigned int)(n * -1);
+	else
+		num = (unsigned int)n;
+	len += ft_numlen(num) + 1 + ((n < 0) ? 1 : 0);
+	if(!(array = (char *)malloc(len * sizeof(char))))
+		return (0);
+	if (n < 0)
+		array[0] = '-';
+	array[len - 1] = '\0';
+	len -= 2;
+	while (num >= 10)
 	{
-		array[i] = '-';
-		i++;
+		array[len] = (char)(num % 10) + '0';
+		num = num / 10;
+		len--;
 	}
-	ft_loop(num, i, len, array);
+	array[len] = (char)num % 10 + '0';
 	return (array);
 }

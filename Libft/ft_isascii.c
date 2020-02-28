@@ -14,12 +14,7 @@
 
 int		ft_isascii(int c)
 {
-	int inicial;
-	int octal_final;
-
-	inicial = 0;
-	octal_final = 0177;
-	if (c >= inicial && c <= octal_final)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }

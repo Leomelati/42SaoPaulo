@@ -19,12 +19,7 @@ t_list	*ft_lstnew(void *content)
 	element = malloc(sizeof(t_list));
 	if (!element)
 		return (NULL);
-	else if (!content)
-		return (NULL);
-	element->content = malloc(sizeof(*(element->content)) * sizeof(content));
-	if (!element->content)
-		return (NULL);
-	element->content = ft_memcpy(element->content, content, sizeof(content));
+	element->content = (void *)content;
 	element->next = NULL;
 	return (element);
 }

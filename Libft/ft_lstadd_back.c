@@ -14,8 +14,11 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	while (lst != NULL)
-		lst = (*lst)->next;
-	(*lst)->next = new;
-	return (lst);
+	t_list	*last;
+
+	last = ft_lstlast(*lst);
+	if (!last)
+		*lst = new;
+	else
+		last->next = new;
 }

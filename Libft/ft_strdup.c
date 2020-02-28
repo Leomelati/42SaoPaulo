@@ -13,17 +13,20 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *src)
 {
 	size_t	size;
-	char	*cs1;
+	size_t	i;
 	char	*p;
 
-	size = ft_strlen(s1) + 1;
-	cs1 = (char *)s1;
-	p = malloc(size);
-	if (p == NULL)
-		return (NULL);
-	ft_strlcpy(p, cs1, size);
+	size = ft_strlen(src) + 1;
+	if (!(p = malloc(size * sizeof(char))))
+		return (0);
+	while (i < size)
+	{
+		p[i] = src[i];
+		i++;
+	}
+	p[i] = '\0';
 	return (p);
 }

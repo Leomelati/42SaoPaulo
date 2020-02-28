@@ -12,30 +12,25 @@
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src,
-			size_t dstsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	dest_count;
-	unsigned int	src_count;
-	unsigned int	nt_count;
+	size_t	dest_count;
+	size_t	src_count;
+	size_t	i;
+	size_t	j;
 
-	dest_count = 0;
-	src_count = 0;
-	nt_count = 0;
-	while (dst[dest_count] != '\0')
-		dest_count++;
-	while (src[src_count] != '\0')
-		src_count++;
-	if (dstsize <= dest_count)
-		src_count += dstsize;
-	else
-		src_count += dest_count;
-	while (src[nt_count] != '\0' && dest_count + 1 < dstsize)
+	dest_count = ft_strlen(dest);
+	src_count = ft_strlen(src);
+	if (size <= dest_count)
+		return (src_count + size);
+	i = 0;
+	j = dest_count;
+	while (src[i] != '\0' && size != '\0' && j < (size - 1))
 	{
-		dst[dest_count] = src[nt_count];
-		dest_count++;
-		nt_count++;
+		dest[j] = (char)src[i];
+		j++;
+		i++;
 	}
-	dst[dest_count] = '\0';
-	return (src_count);
+	dest[j] = '\0';
+	return (src_count + dest_count);
 }
