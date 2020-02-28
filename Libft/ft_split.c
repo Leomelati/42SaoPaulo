@@ -6,12 +6,11 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 18:30:35 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/17 12:09:54 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:43:28 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_word_count(char const *s, char c)
 {

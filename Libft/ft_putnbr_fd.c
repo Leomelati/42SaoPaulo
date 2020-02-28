@@ -3,19 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/14 02:08:59 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/14 02:08:59 by lmartins         ###   ########.fr       */
+/*   Created: 2020/02/28 12:47:38 by lmartins          #+#    #+#             */
+/*   Updated: 2020/02/28 12:52:32 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	ft_up_putnbr(unsigned int n, int fd)
+{
+	char		num;
+
+	if (n / 10 > 0)
+		ft_up_putnbr(n / 10, fd);
+	num = n % 10 + '0';
+	ft_putchar_fd(num, fd);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*num;
+	unsigned int nb;
 
-	num = ft_itoa(n);
-	ft_putstr_fd(num, fd);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nb = n * -1;
+	}
+	else
+		nb = n;
+	ft_up_putnbr(nb, fd);
 }

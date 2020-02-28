@@ -6,12 +6,11 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 00:24:45 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/17 10:53:56 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:55:23 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int		ft_numlen(unsigned int n)
 {
@@ -36,8 +35,8 @@ char	*ft_itoa(int n)
 		num = (unsigned int)(n * -1);
 	else
 		num = (unsigned int)n;
-	len += ft_numlen(num) + 1 + ((n < 0) ? 1 : 0);
-	if(!(array = (char *)malloc(len * sizeof(char))))
+	len = ft_numlen(num) + 1 + ((n < 0) ? 1 : 0);
+	if (!(array = (char *)malloc(len * sizeof(char))))
 		return (0);
 	if (n < 0)
 		array[0] = '-';
