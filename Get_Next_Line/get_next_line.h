@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:16:19 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/25 02:16:19 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:00:39 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int		get_next_line(int fd, char **line);
+size_t	get_len(const char *str);
 int		index_caract(char *buffer, int c);
 int		get_line(char **str, char **line, int i);
+int		get_next_line(int fd, char **line);
+void	*ft_memcpy(void *str1, const void *str2, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *src);
 char	*join_str(char *str, char *buffer);
-char	*ft_strdup(const char *s1);
 
 #endif

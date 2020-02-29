@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartins <lmartins@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:58 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/25 02:14:58 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:26:17 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t	get_len(const char *str)
+{
+	unsigned int cont;
+
+	cont = 0;
+	while (str[cont] != '\0')
+		cont++;
+	return (cont);
+}
 
 int		index_caract(char *buffer, int c)
 {
@@ -30,7 +40,7 @@ int		get_line(char **str, char **line, int i)
 
 	*line = ft_substr(*str, 0, i);
 	i++;
-	len = ft_strlen(*str + 1) + 1;
+	len = get_len(*str + 1) + 1;
 	ft_memmove(*str, *str + i, len);
 	if (*str && *str[0] == '\0')
 	{
@@ -52,6 +62,8 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (str && (i = index_caract(str, '\n') == -1))
 		return (get_line(&str, line, i));
+	if (!(fd))
+		fd = 0;
 	while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[ret] = '\0';
@@ -68,22 +80,22 @@ int		get_next_line(int fd, char **line)
 	return (ret);
 }
 
-int		main(void)
-{
-	int		fd;
-	int		i;
-	char	*line;
+// int		main(void)
+// {
+// 	int		fd;
+// 	int		i;
+// 	char	*line;
 
-	fd = open("file", O_RDONLY);
-	if (fd == -1)
-		return (0);
-	i = 1;
-	while (i <= 3)
-	{
-		get_next_line(fd, &line);
-		printf("%s\n", line);
-		i++;
-	}
-	return (0);
-}
+// 	fd = open("file", O_RDONLY);
+// 	if (fd == -1)
+// 		return (0);
+// 	i = 1;
+// 	while (i <= 3)
+// 	{
+// 		get_next_line(fd, &line);
+// 		printf("%s\n", line);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 

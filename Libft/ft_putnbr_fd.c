@@ -6,13 +6,13 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 12:47:38 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/28 12:52:32 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/02/29 11:16:58 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_up_putnbr(unsigned int n, int fd)
+static void	ft_up_putnbr(unsigned int n, int fd)
 {
 	char		num;
 
@@ -22,7 +22,7 @@ void	ft_up_putnbr(unsigned int n, int fd)
 	ft_putchar_fd(num, fd);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void		ft_putnbr_fd(int n, int fd)
 {
 	unsigned int nb;
 
