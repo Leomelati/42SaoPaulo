@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:15:01 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/29 12:06:51 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:31:51 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_strdup(const char *src)
 	i = 0;
 	while (src[i] != '\0')
 		i++;
-	if (!(p = malloc(i * sizeof(char))))
+	if (!(p = malloc((i + 1) * sizeof(char))))
 		return (0);
 	i = 0;
 	while (src[i] != '\0')
@@ -99,25 +99,30 @@ char	*ft_strdup(const char *src)
 	return (p);
 }
 
-char	*join_str(char *str, char *buffer)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*array;
-	size_t		len_str;
-	size_t		len_buff;
-	size_t			i;
+	size_t	i;
+	size_t	j;
+	char	*string;
 
-	if (!str)
-		return (ft_strdup(buffer));
-	len_buff = get_len(buffer);
-	len_str = get_len(str);
-	array = (char *)malloc((len_str + len_buff + 1) * sizeof(char));
+	if (!(s1))
+		return (ft_strdup(s2));
+	if (!(string = malloc((get_len(s1) + get_len(s2) + 1) * sizeof(char))))
+		return (0);
 	i = 0;
-	while (i++ <= len_str)
-		array[i] = str[i];
-	free(str);
-	str = NULL;
-	array[i + len_buff] = '\0';
-	while (len_buff--)
-		array[i + len_buff] = buffer[len_buff];
-	return (array);
+	while (s1[i] != '\0')
+	{
+		string[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		string[i] = s2[j];
+		j++;
+		i++;
+	}
+	string[i] = '\0';
+	return (string);
 }
+

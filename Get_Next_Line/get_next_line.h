@@ -6,7 +6,7 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:16:19 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/29 12:00:39 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:30:41 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	*ft_memcpy(void *str1, const void *str2, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
-char	*join_str(char *str, char *buffer);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:58 by lmartins          #+#    #+#             */
-/*   Updated: 2020/02/29 12:26:17 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:40:08 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#define BUFFER_SIZE 5
 
 size_t	get_len(const char *str)
 {
@@ -28,7 +29,11 @@ int		index_caract(char *buffer, int c)
 
 	i = 0;
 	while (buffer[i] != (char)c && buffer[i])
+	{
+		// // printf(" %c ", buffer[i]);
 		i++;
+	}
+	// // printf("\n");
 	if (buffer[i] != (char)c)
 		return (-1);
 	return (i);
@@ -42,7 +47,7 @@ int		get_line(char **str, char **line, int i)
 	i++;
 	len = get_len(*str + 1) + 1;
 	ft_memmove(*str, *str + i, len);
-	if (*str && *str[0] == '\0')
+	if (*str[0] == '\0')
 	{
 		free(*str);
 		*str = NULL;
@@ -58,21 +63,31 @@ int		get_next_line(int fd, char **line)
 	static char		*str = NULL;
 	char			buffer[BUFFER_SIZE + 1];
 
-	if (fd < 1 || BUFFER_SIZE < 1 || !line || read(fd, buffer, 0) < 0)
+	// printf("\nStr:\n%s\n", str);
+	if (BUFFER_SIZE < 1 || !line || read(fd, buffer, 0) < 0)
 		return (-1);
-	if (str && (i = index_caract(str, '\n') == -1))
+	if (str && ((i = index_caract(str, '\n')) != -1))
+	{
+		// printf("\n\n\n\n\n\n\n\n\n\nEntrou no Segundo If\n");
+		// printf("i: %d\n", i);
 		return (get_line(&str, line, i));
-	if (!(fd))
-		fd = 0;
+	}
 	while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
+		// // printf("\nEntrou no While\n");
 		buffer[ret] = '\0';
-		str = join_str(str, buffer);
+		str = ft_strjoin(str, buffer);
+		// printf("\nstr: %s\n", str);
 		if ((i = index_caract(str, '\n')) != -1)
+		{
+			// // printf("\nEntrou no If dentro do While\n");
 			return (get_line(&str, line, i));
+		}
 	}
+	// // printf("\nSaiu do While");
 	if (str)
 	{
+		// // printf("\nEntrou no If do free\n");
 		*line = ft_strdup(str);
 		free(str);
 		str = NULL;
@@ -80,22 +95,18 @@ int		get_next_line(int fd, char **line)
 	return (ret);
 }
 
-// int		main(void)
-// {
-// 	int		fd;
-// 	int		i;
-// 	char	*line;
+int main(void)
+{
+	char *line;
+	int fd;
+	int end = 5;
 
-// 	fd = open("file", O_RDONLY);
-// 	if (fd == -1)
-// 		return (0);
-// 	i = 1;
-// 	while (i <= 3)
-// 	{
-// 		get_next_line(fd, &line);
-// 		printf("%s\n", line);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	fd = 0;
+	// fd = open("file", O_RDONLY);
+	while (end--)
+	{
+		get_next_line(fd, &line);
+		printf("%s\n", line);
+	}
 
+}
