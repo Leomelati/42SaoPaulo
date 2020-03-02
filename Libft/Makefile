@@ -6,7 +6,7 @@
 #    By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/24 10:59:55 by lmartins          #+#    #+#              #
-#    Updated: 2020/02/29 11:00:44 by lmartins         ###   ########.fr        #
+#    Updated: 2020/02/28 11:40:08 by lmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,12 @@ RM = rm -f
 all:	$(NAME)
 
 $(NAME):
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $(FILES)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $(FILES) libft.h
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
 bonus:	$(NAME)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $(FILES) $(BONUS)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $(FILES) $(BONUS) libft.h
 	@ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
 	@ranlib $(NAME)
 
