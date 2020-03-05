@@ -74,6 +74,7 @@ int		get_next_line(int fd, char **line)
 		*line = ft_strdup(str);
 		free(str);
 		str = NULL;
+		return (ret);
 	}
 	*line = ft_strdup("");
 	return (ret);
