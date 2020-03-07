@@ -6,48 +6,36 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:15:01 by lmartins          #+#    #+#             */
-/*   Updated: 2020/03/02 11:31:51 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/07 16:29:00 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memcpy(void *str1, const void *str2, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*cstr1;
-	char	*cstr2;
-	size_t	i;
+	unsigned int	i;
+	char			*cs;
 
-	cstr1 = (char *)str1;
-	cstr2 = (char *)str2;
-	if (str1 == NULL && str2 == NULL)
-		return (NULL);
 	i = 0;
-	while (i < n)
+	cs = (char *)s;
+	while (i <= ft_strlen(cs))
 	{
-		cstr1[i] = cstr2[i];
+		if (cs[i] == (char)c)
+			return (&cs[i]);
 		i++;
 	}
-	return (cstr1);
+	return (0);
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t	ft_strlen(const char *str)
 {
-	char	*cdst;
-	char	*csrc;
+	unsigned int cont;
 
-	if (dst == src)
-		return (dst);
-	if (src > dst)
-	{
-		dst = ft_memcpy(dst, src, len);
-		return (dst);
-	}
-	cdst = (char *)dst;
-	csrc = (char *)src;
-	while (len-- > 0)
-		cdst[len] = csrc[len];
-	return (dst);
+	cont = 0;
+	while (str[cont] != '\0')
+		cont++;
+	return (cont);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -59,7 +47,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	cs = (char *)s;
 	if (!(cs))
 		return (0);
-	if (start > (unsigned int)get_len(cs))
+	if (start > (unsigned int)ft_strlen(cs))
 	{
 		if (!(substring = malloc(1)))
 			return (0);
@@ -107,7 +95,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!(s1))
 		return (ft_strdup(s2));
-	if (!(string = malloc((get_len(s1) + get_len(s2) + 1) * sizeof(char))))
+	if (!(string = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
 		return (0);
 	i = 0;
 	while (s1[i] != '\0')
@@ -125,4 +113,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	string[i] = '\0';
 	return (string);
 }
-

@@ -6,76 +6,72 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:58 by lmartins          #+#    #+#             */
-/*   Updated: 2020/03/04 11:23:05 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/07 16:32:31 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	get_len(const char *str)
+void	ft_strdel(char **str)
 {
-	unsigned int cont;
-
-	cont = 0;
-	while (str[cont] != '\0')
-		cont++;
-	return (cont);
-}
-
-int		index_caract(char *buffer, int c)
-{
-	int		i;
-
-	i = 0;
-	while (buffer[i] != (char)c && buffer[i])
-		i++;
-	if (buffer[i] != (char)c)
-		return (-1);
-	return (i);
-}
-
-int		get_line(char **str, char **line, int i)
-{
-	int len;
-
-	*line = ft_substr(*str, 0, i);
-	i++;
-	len = get_len(*str + 1) + 1;
-	ft_memmove(*str, *str + i, len);
-	if (*str[0] == '\0')
+	if (str && *str)
 	{
-		free(*str);
-		*str = NULL;
+		free(str);
+		str = NULL;
 	}
-	return (1);
 }
 
+int		get_line(char **str, char **line, int ret)
+{
+	int i;
+	char *temp;
+
+	if (ret < 0)
+		return (-1);
+	i = 0;
+	else if ((et == i && *str[i] == '\0')
+	{
+		*line = ft_strdup("");
+		ft_strdel(str);
+		return (0);
+	}
+	while (*str[i] != '\n' && *str[i] != '\0')
+		i++;
+	*line = ft_substr(*str, 0, i);
+	if (*str[i] == '\n')
+	{
+		temp = ft_strdup(*str + i + 1);
+		ft_strdel(str);
+		return (1);
+	}
+	ft_strdel(str);
+	return (0);
+}
 
 int		get_next_line(int fd, char **line)
 {
 	int				i;
 	int				ret;
-	static char		*str = NULL;
-	char			buffer[BUFFER_SIZE + 1];
+	static char		*str[OPEN_MAX];
+	char			*buffer;
+	char			*temp;
 
-	if (BUFFER_SIZE < 1 || !line || read(fd, buffer, 0) < 0)
+	if (BUFFER_SIZE < 1 || !line || fd < 0)
 		return (-1);
-	if (str && ((i = index_caract(str, '\n')) != -1))
-		return (get_line(&str, line, i));
+	if (!(str[fd]))
+		if (!(str[fd] = ft_strdup("")))
+			return (-1);
+	if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer))))
+		return (-1);
 	while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[ret] = '\0';
-		str = ft_strjoin(str, buffer);
-		if ((i = index_caract(str, '\n')) != -1)
-			return (get_line(&str, line, i));
+		temp = ft_strjoin(str[fd], buffer);
+		ft_strdel(&str[fd]);
+		str[fd] = temp;
+		if (ft_strchr(buffer, '\n'))
+			break ;
 	}
-	if (str)
-	{
-		*line = ft_strdup(str);
-		free(str);
-		str = NULL;
-		return (ret);
-	}
-	*line = ft_strdup("");
-	return (ret);
+	ft_strdel(buffer);
+	return (get_line(&str[fd], line, ret));
 }
