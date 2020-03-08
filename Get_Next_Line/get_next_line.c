@@ -28,13 +28,13 @@ int		get_line(char **str, char **line, int ret)
 
 	if (ret < 0)
 		return (-1);
-	i = 0;
-	else if ((et == i && *str[i] == '\0')
+	else if (ret == 0 && *str[0] == '\0')
 	{
 		*line = ft_strdup("");
 		ft_strdel(str);
 		return (0);
 	}
+	i = 0;
 	while (*str[i] != '\n' && *str[i] != '\0')
 		i++;
 	*line = ft_substr(*str, 0, i);
