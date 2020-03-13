@@ -6,25 +6,25 @@
 /*   By: lmartins <lmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:58 by lmartins          #+#    #+#             */
-/*   Updated: 2020/03/07 16:32:31 by lmartins         ###   ########.fr       */
+/*   Updated: 2020/03/13 11:45:07 by lmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_strdel(char **str)
 {
 	if (str && *str)
 	{
-		free(str);
-		str = NULL;
+		free(*str);
+		*str = NULL;
 	}
 }
 
 int		get_line(char **str, char **line, int ret)
 {
-	int i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	if (ret < 0)
 		return (-1);
@@ -35,13 +35,14 @@ int		get_line(char **str, char **line, int ret)
 		return (0);
 	}
 	i = 0;
-	while (*str[i] != '\n' && *str[i] != '\0')
+	while ((*str)[i] != '\n' && (*str)[i] != '\0')
 		i++;
 	*line = ft_substr(*str, 0, i);
-	if (*str[i] == '\n')
+	if ((*str)[i] == '\n')
 	{
 		temp = ft_strdup(*str + i + 1);
-		ft_strdel(str);
+		free(*str);
+		*str = temp;
 		return (1);
 	}
 	ft_strdel(str);
@@ -50,7 +51,6 @@ int		get_line(char **str, char **line, int ret)
 
 int		get_next_line(int fd, char **line)
 {
-	int				i;
 	int				ret;
 	static char		*str[OPEN_MAX];
 	char			*buffer;
@@ -72,6 +72,6 @@ int		get_next_line(int fd, char **line)
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	ft_strdel(buffer);
-	return (get_line(&str[fd], line, ret));
+	free(buffer);
+	return (get_line(&(str[fd]), line, ret));
 }
